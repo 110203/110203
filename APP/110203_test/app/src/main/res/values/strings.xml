@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">res>values>strings</string>
+    <string name="title_home">Home</string>
+    <string name="title_member">Member</string>
+    <string name="title_cart">Cart</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="exhibition_type">
+        <item>雞腿飯</item>
+        <item>魯肉飯</item>
+        <item>排骨飯</item>
+        <item>水餃</item>
+        <item>陽春麵</item>
+    </string-array>
+
+    <string name="teamEmail">110203@ntub.edu.tw</string>
+
+    <string-array name="exhibition"></string-array>
+
+
+</resources>
