@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap 4, from LayoutIt!</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<h3>
+						展覽搜尋結果
+					</h3>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+									展覽名稱
+								</th>
+								<th>
+									開始時間
+								</th>
+								<th>
+									結束時間
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% for(var i=0; i<items.length; i++) {%>
+								<td>
+									<%= items[i].eName %>
+								</td>
+								<td>
+									<%= items[i].startTime %>
+								</td>
+								<td>
+									<%= items[i].endTime %>
+								</td>
+								<td>
+									<a href="/updateExhibition/<%= items[i].eNo %>" class="aa-top-slider-btn">修改</a>
+								</td>
+							</tr>
+							<% } %> 
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/scripts.js"></script>
+  </body>
+</html>

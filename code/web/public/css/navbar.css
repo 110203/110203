@@ -1,0 +1,198 @@
+nav {
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    display: block;
+    z-index: 999 !important;
+    width: 100%;
+    font-family: 'Poppins','Noto Sans TC', sans-serif !important;
+    background-color: #fff;
+    font-size: 18px;
+}
+
+.navbar-brand{
+    font-family: 'Lobster', cursive;
+    font-size: 35px;
+    line-height: 35px;
+    font-weight: 600;
+    padding: 0 10px 0 0;
+    margin: 0;
+    margin-top: 0;
+    background: -webkit-linear-gradient(top right,#ffbf00 0,#ee6363 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form-inline{
+    margin:5px auto;
+}
+
+.nav-item a{
+    color: #222;
+    font-size: 18px;
+    padding-left: 8px;
+}
+
+.nav-item a i{
+    color: #ffbf00;
+    vertical-align: text-bottom;
+}
+
+.badge {
+    position: relative;
+    /*top: -16px;
+    right: 16px;*/
+    padding: 4px 6px;
+    margin: 0;
+    background: gray;
+    color: white;
+}
+
+.nav-link:focus{
+    color: #ffbf00;
+}
+
+.dropdown .dropdown-menu{
+    font-size: 15px;
+}
+
+.nav-item .dropdown .dropdown-menu{
+    right: 100px !important;
+}
+
+.dropdown-menu .member{
+    text-align: center;
+}
+
+.dropdown .dropdown-menu .notific{
+    width: 300px;
+    margin:5px 15px;
+    margin-bottom: 0;
+    border-bottom :0.5px dashed #999;
+}
+
+.dropdown .dropdown-menu .notific2{
+    width: 350px;
+    margin:5px 15px;
+    margin-bottom: 0;
+    border-bottom :0.5px dashed #999;
+}
+
+.icon-align{
+    vertical-align: text-bottom;
+}
+
+.media {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+.media-body {
+    -ms-flex: 1;
+    flex: 1;
+    margin-left: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.rounded-circle {
+    width: 54px;
+	float: left;
+	border-radius: 100%;
+	-moz-border-radius: 100%;
+	-webkit-border-radius: 100%;
+    -khtml-border-radius: 100%;
+    margin: 5px 0 5px 0;
+}
+
+.media-body .name{
+    font-size: 16px;
+    font-weight: 550;
+    margin: 10px 0 3px 0;
+}
+
+.media-body .name a{
+    padding: 0;
+    margin: 0;
+    margin-left: -10px;
+}
+
+.media-body p{
+    font-size: 13px;
+}
+
+#button-block{
+    margin: 0 auto;
+}
+
+#button-block form button{
+    display:inline-block;
+}
+
+#confirm{
+    background-color:#ffbf00;
+    color:white;
+    padding: 0.375rem 0.75rem;
+    border-radius:4px;
+    margin: 10px 10px 0 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#delete{
+    background-color:#bbb;
+    color:#222;
+    border:1px solid #999;
+    padding: 0.375rem 0.75rem;
+    border-radius:4px;
+    margin: 10px 10px 0 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#button-block form button:hover{
+    opacity:.8;
+    cursor:pointer;
+}
+
+@media (max-width:1000px){
+    .navbar-brand{
+        width: 1.5em; height: 1.5em; /*這樣才會跟三條槓槓同高*/
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .nav-item .dropdown-menu-right a .rounded-circle{
+        width: 68px !important;
+        height: 68px !important;
+    }
+}
+
+@media (min-width: 576px) {
+    .nav-item .dropdown-menu-right a .rounded-circle{
+        width: 70px !important;
+        height: 70px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-item .dropdown-menu-right a .rounded-circle{
+        width: 75px !important;
+        height: 75px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .nav-item .dropdown-menu-right a .rounded-circle{
+        width: 78px !important;
+        height: 78px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .nav-item .dropdown-menu-right a .rounded-circle{
+        width: 80px !important;
+        height: 80px !important;
+    }
+}

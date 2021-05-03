@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap 4, from LayoutIt!</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<a type="button" class="btn btn-success" href="/addExhibition">
+				新增展覽
+			</a> 
+			<a type="button" class="btn btn-success" href="/addGoods">
+				新增商品
+      </a>
+      <form class="form-inline my-2 my-lg-0" action="/searchE" method="GET">
+        <input class="form-control mr-sm-2" type="text" name="keyword" placeholder="輸入關鍵字搜尋展覽">
+        <button class="btn btn-primary2 my-2 my-sm-0" type="submit" style="margin: auto 10px auto 3px;">搜尋</button>
+      </form>
+      <form class="form-inline my-2 my-lg-0" action="/searchG" method="GET">
+        <input class="form-control mr-sm-2" type="text" name="keyword" placeholder="輸入關鍵字搜尋商品">
+        <button class="btn btn-primary2 my-2 my-sm-0" type="submit" style="margin: auto 10px auto 3px;">搜尋</button>
+      </form>
+		</div>
+	</div>
+</div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/scripts.js"></script>
+  </body>
+</html>
