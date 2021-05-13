@@ -4,17 +4,42 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
-import android.widget.SimpleAdapter
+import android.webkit.WebViewClient
+import com.example.test2.activity.Commodity
 import kotlinx.android.synthetic.main.activity_exhibition_2_d.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class Exhibition_2D : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exhibition_2_d)
 
-        val myWebView: WebView = findViewById(R.id.webview)
-        myWebView.loadUrl("https://roundme.com/tour/708665/info")
+        // 隱藏TitleBar
+        supportActionBar?.hide()
+
+        // 接收home的資料
+        var getShowNo = intent.getBundleExtra("bundle")?.getString("showNo")
+
+        // 顯示網頁(Roundme)
+        val webView = findViewById<WebView>(R.id.webview)
+        webView.webViewClient = WebViewClient()
+        webView.loadUrl("https://roundme.com/tour/708665/info")
+        val webSettings = webView.settings
+        webSettings.javaScriptEnabled = true // 讓網頁js可以使用
+
+
+
+
+        btnToBackHome.setOnClickListener {
+            finish()
+        }
+
+        btnToCommdityList.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("showNo", getShowNo)
+            val intent = Intent(this, Commodity::class.java)
+            intent.putExtra("bundle", bundle)
+            this.startActivity(intent)
+        }
     }
 
 

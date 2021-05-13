@@ -6,13 +6,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string-array name="exhibition_type">
-        <item>雞腿飯</item>
-        <item>魯肉飯</item>
-        <item>排骨飯</item>
-        <item>水餃</item>
-        <item>陽春麵</item>
-    </string-array>
+
 
     <string name="teamEmail">110203@ntub.edu.tw</string>
 
