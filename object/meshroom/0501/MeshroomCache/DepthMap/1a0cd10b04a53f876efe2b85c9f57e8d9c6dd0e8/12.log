@@ -1,0 +1,350 @@
+Program called with the following parameters:
+ * downscale = 2
+ * exportIntermediateResults = 0
+ * imagesFolder = "C:/Users/Chloe/Desktop/meshroom/0501/MeshroomCache/PrepareDenseScene/4338d06a4b9ea692ad8e705188441079ed731036"
+ * input = "C:/Users/Chloe/Desktop/meshroom/0501/MeshroomCache/StructureFromMotion/46ee6e5b3997b81bf11384f68b8a646e69a5f1c7/sfm.abc"
+ * maxViewAngle = 70
+ * minViewAngle = 2
+ * nbGPUs = 0
+ * output = "C:/Users/Chloe/Desktop/meshroom/0501/MeshroomCache/DepthMap/1a0cd10b04a53f876efe2b85c9f57e8d9c6dd0e8"
+ * rangeSize = 3
+ * rangeStart = 36
+ * refineGammaC = 15.5
+ * refineGammaP = 8
+ * refineMaxTCams = 6
+ * refineNDepthsToRefine = 31
+ * refineNSamplesHalf = 150
+ * refineNiters = 100
+ * refineSigma = 15
+ * refineUseTcOrRcPixSize = 0
+ * refineWSH = 3
+ * sgmGammaC = 5.5
+ * sgmGammaP = 8
+ * sgmMaxTCams = 10
+ * sgmWSH = 4
+ * verboseLevel = "info"
+
+[21:02:24.517905][info] CUDA-Enabled GPU.
+Device information:
+	- id:                      0
+	- name:                    GeForce GTX 1660 Ti
+	- compute capability:      7.5
+	- total device memory:     6144 MB 
+	- device memory available: 5154 MB 
+	- per-block shared memory: 49152
+	- warp size:               32
+	- max threads per block:   1024
+	- max threads per SM(X):   1024
+	- max block sizes:         {1024,1024,64}
+	- max grid sizes:          {2147483647,65535,65535}
+	- max 2D array texture:    {131072,65536}
+	- max 3D array texture:    {16384,16384,16384}
+	- max 2D linear texture:   {131072,65000,2097120}
+	- max 2D layered texture:  {32768,32768,2048}
+	- number of SM(x)s:        24
+	- registers per SM(x):     65536
+	- registers per block:     65536
+	- concurrent kernels:      yes
+	- mapping host memory:     yes
+	- unified addressing:      yes
+	- texture alignment:       512 byte
+	- pitch alignment:         32 byte
+[21:02:24.653549][info] Supported CUDA-Enabled GPU detected.
+[21:02:24.916275][info] Found 1 image dimension(s): 
+[21:02:24.916275][info] 	- [3744x5616]
+[21:02:25.022988][info] Overall maximum dimension: [3744x5616]
+[21:02:25.023986][info] Create depth maps.
+number of CUDA devices:	1
+   0: GeForce GTX 1660 Ti
+[21:02:25.023986][info] # GPU devices: 1, # CPU threads: 12
+[21:02:25.023986][info] Plane sweeping parameters:
+	- scale: 2
+	- step: 5
+[21:02:25.023986][info] PlaneSweepingCuda:
+	- _nImgsInGPUAtTime: 2
+	- scales: 2
+	- subPixel: Yes
+	- varianceWSH: 4
+CUDA device no 0 for 0
+Device 0 memory - used: 989.437500, free: 5154.562500, total: 6144.000000
+Device 0 memory - used: 1190.562500, free: 4953.437500, total: 6144.000000
+[21:02:36.255931][info] Estimate depth map, view id: 1338929519
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 7.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 7.000000 ms 
+Device 0 memory - used: 1382.812500, free: 4761.187500, total: 6144.000000
+total size of volume map in GPU memory: 192.226562
+nDepths 1406, nDepthsToSearch 1406 
+ps_computeSimilarityVolume elapsed time: 5.000000 ms 
+Device 0 memory - used: 1358.750000, free: 4785.250000, total: 6144.000000
+total size of volume map in GPU memory: 168.164062
+nDepths 1230, nDepthsToSearch 1230 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 7.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1319.250000, free: 4824.750000, total: 6144.000000
+total size of volume map in GPU memory: 128.652344
+nDepths 941, nDepthsToSearch 941 
+ps_computeSimilarityVolume elapsed time: 5.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+ps_SGMoptimizeSimVolume
+ps_updateAggrVolume
+ps_aggregatePathVolume
+ps_aggregatePathVolume done
+ps_updateAggrVolume done
+ps_updateAggrVolume
+ps_aggregatePathVolume
+ps_aggregatePathVolume done
+ps_updateAggrVolume done
+ps_updateAggrVolume
+ps_aggregatePathVolume
+ps_aggregatePathVolume done
+ps_updateAggrVolume done
+ps_updateAggrVolume
+ps_aggregatePathVolume
+ps_aggregatePathVolume done
+ps_updateAggrVolume done
+SGM volume gpu elapsed time: 556.000000 ms 
+ps_SGMoptimizeSimVolume done
+[21:02:50.227299][info] Refine depth map, view id: 1338929519
+gpu elapsed time: 412.000000 ms 
+gpu elapsed time: 427.000000 ms 
+gpu elapsed time: 423.000000 ms 
+gpu elapsed time: 391.000000 ms 
+gpu elapsed time: 419.000000 ms 
+gpu elapsed time: 426.000000 ms 
+gpu elapsed time: 426.000000 ms 
+gpu elapsed time: 406.000000 ms 
+gpu elapsed time: 411.000000 ms 
+gpu elapsed time: 424.000000 ms 
+gpu elapsed time: 424.000000 ms 
+gpu elapsed time: 392.000000 ms 
+gpu elapsed time: 375.000000 ms 
+gpu elapsed time: 415.000000 ms 
+gpu elapsed time: 424.000000 ms 
+gpu elapsed time: 409.000000 ms 
+gpu elapsed time: 378.000000 ms 
+gpu elapsed time: 419.000000 ms 
+gpu elapsed time: 422.000000 ms 
+gpu elapsed time: 411.000000 ms 
+gpu elapsed time: 400.000000 ms 
+gpu elapsed time: 424.000000 ms 
+gpu elapsed time: 425.000000 ms 
+gpu elapsed time: 400.000000 ms 
+gpu elapsed time: 324.000000 ms 
+gpu elapsed time: 321.000000 ms 
+gpu elapsed time: 323.000000 ms 
+gpu elapsed time: 318.000000 ms 
+rc: 36, gpu elapsed time: 156.000000 ms 
+rc: 36, gpu elapsed time: 158.000000 ms 
+rc: 36, gpu elapsed time: 157.000000 ms 
+rc: 36, gpu elapsed time: 153.000000 ms 
+[21:03:14.207623][info] Estimate depth map, view id: 1393352656
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1326.625000, free: 4817.375000, total: 6144.000000
+total size of volume map in GPU memory: 136.035156
+nDepths 995, nDepthsToSearch 995 
+ps_computeSimilarityVolume elapsed time: 4.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 7.000000 ms 
+Device 0 memory - used: 1342.500000, free: 4801.500000, total: 6144.000000
+total size of volume map in GPU memory: 151.894531
+nDepths 1111, nDepthsToSearch 1111 
+ps_computeSimilarityVolume elapsed time: 5.000000 ms 
+Device 0 memory - used: 1310.062500, free: 4833.937500, total: 6144.000000
+total size of volume map in GPU memory: 119.492188
+nDepths 874, nDepthsToSearch 874 
+ps_computeSimilarityVolume elapsed time: 4.000000 ms 
+Device 0 memory - used: 1357.937500, free: 4786.062500, total: 6144.000000
+total size of volume map in GPU memory: 167.343750
+nDepths 1224, nDepthsToSearch 1224 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1388.000000, free: 4756.000000, total: 6144.000000
+total size of volume map in GPU memory: 197.421875
+nDepths 1444, nDepthsToSearch 1444 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+ps_SGMoptimizeSimVolume
+ps_updateAggrVolume
+ps_aggregatePathVolume
+ps_aggregatePathVolume done
+ps_updateAggrVolume done
+ps_updateAggrVolume
+ps_aggregatePathVolume
+ps_aggregatePathVolume done
+ps_updateAggrVolume done
+ps_updateAggrVolume
+ps_aggregatePathVolume
+ps_aggregatePathVolume done
+ps_updateAggrVolume done
+ps_updateAggrVolume
+ps_aggregatePathVolume
+ps_aggregatePathVolume done
+ps_updateAggrVolume done
+SGM volume gpu elapsed time: 537.000000 ms 
+ps_SGMoptimizeSimVolume done
+[21:03:27.509194][info] Refine depth map, view id: 1393352656
+gpu elapsed time: 395.000000 ms 
+gpu elapsed time: 410.000000 ms 
+gpu elapsed time: 398.000000 ms 
+gpu elapsed time: 334.000000 ms 
+gpu elapsed time: 429.000000 ms 
+gpu elapsed time: 426.000000 ms 
+gpu elapsed time: 425.000000 ms 
+gpu elapsed time: 409.000000 ms 
+gpu elapsed time: 428.000000 ms 
+gpu elapsed time: 426.000000 ms 
+gpu elapsed time: 424.000000 ms 
+gpu elapsed time: 410.000000 ms 
+gpu elapsed time: 413.000000 ms 
+gpu elapsed time: 417.000000 ms 
+gpu elapsed time: 419.000000 ms 
+gpu elapsed time: 355.000000 ms 
+gpu elapsed time: 423.000000 ms 
+gpu elapsed time: 428.000000 ms 
+gpu elapsed time: 426.000000 ms 
+gpu elapsed time: 356.000000 ms 
+gpu elapsed time: 417.000000 ms 
+gpu elapsed time: 424.000000 ms 
+gpu elapsed time: 425.000000 ms 
+gpu elapsed time: 389.000000 ms 
+gpu elapsed time: 322.000000 ms 
+gpu elapsed time: 324.000000 ms 
+gpu elapsed time: 321.000000 ms 
+gpu elapsed time: 318.000000 ms 
+rc: 37, gpu elapsed time: 157.000000 ms 
+rc: 37, gpu elapsed time: 158.000000 ms 
+rc: 37, gpu elapsed time: 158.000000 ms 
+rc: 37, gpu elapsed time: 153.000000 ms 
+[21:03:45.939771][info] Estimate depth map, view id: 1473787238
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 7.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1370.125000, free: 4773.875000, total: 6144.000000
+total size of volume map in GPU memory: 179.511719
+nDepths 1313, nDepthsToSearch 1313 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1341.125000, free: 4802.875000, total: 6144.000000
+total size of volume map in GPU memory: 150.527344
+nDepths 1101, nDepthsToSearch 1101 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 7.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 7.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 7.000000 ms 
+Device 0 memory - used: 1395.687500, free: 4748.312500, total: 6144.000000
+total size of volume map in GPU memory: 205.078125
+nDepths 1500, nDepthsToSearch 1500 
+ps_computeSimilarityVolume elapsed time: 6.000000 ms 
+Device 0 memory - used: 1319.125000, free: 4824.875000, total: 6144.000000
+total size of volume map in GPU memory: 128.515625
+nDepths 940, nDepthsToSearch 940 
+ps_computeSimilarityVolume elapsed time: 5.000000 ms 
+ps_SGMoptimizeSimVolume
+ps_updateAggrVolume
+ps_aggregatePathVolume
+ps_aggregatePathVolume done
+ps_updateAggrVolume done
+ps_updateAggrVolume
+ps_aggregatePathVolume
+ps_aggregatePathVolume done
+ps_updateAggrVolume done
+ps_updateAggrVolume
+ps_aggregatePathVolume
+ps_aggregatePathVolume done
+ps_updateAggrVolume done
+ps_updateAggrVolume
+ps_aggregatePathVolume
+ps_aggregatePathVolume done
+ps_updateAggrVolume done
+SGM volume gpu elapsed time: 570.000000 ms 
+ps_SGMoptimizeSimVolume done
+[21:03:59.751553][info] Refine depth map, view id: 1473787238
+gpu elapsed time: 413.000000 ms 
+gpu elapsed time: 427.000000 ms 
+gpu elapsed time: 427.000000 ms 
+gpu elapsed time: 403.000000 ms 
+gpu elapsed time: 410.000000 ms 
+gpu elapsed time: 427.000000 ms 
+gpu elapsed time: 426.000000 ms 
+gpu elapsed time: 400.000000 ms 
+gpu elapsed time: 406.000000 ms 
+gpu elapsed time: 420.000000 ms 
+gpu elapsed time: 420.000000 ms 
+gpu elapsed time: 383.000000 ms 
+gpu elapsed time: 356.000000 ms 
+gpu elapsed time: 395.000000 ms 
+gpu elapsed time: 408.000000 ms 
+gpu elapsed time: 394.000000 ms 
+gpu elapsed time: 424.000000 ms 
+gpu elapsed time: 426.000000 ms 
+gpu elapsed time: 427.000000 ms 
+gpu elapsed time: 327.000000 ms 
+gpu elapsed time: 357.000000 ms 
+gpu elapsed time: 421.000000 ms 
+gpu elapsed time: 421.000000 ms 
+gpu elapsed time: 369.000000 ms 
+gpu elapsed time: 324.000000 ms 
+gpu elapsed time: 324.000000 ms 
+gpu elapsed time: 325.000000 ms 
+gpu elapsed time: 318.000000 ms 
+rc: 38, gpu elapsed time: 157.000000 ms 
+rc: 38, gpu elapsed time: 157.000000 ms 
+rc: 38, gpu elapsed time: 157.000000 ms 
+rc: 38, gpu elapsed time: 154.000000 ms 
+[21:04:14.723506][info] Task done in (s): 110.208000
