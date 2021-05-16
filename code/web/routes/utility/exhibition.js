@@ -53,5 +53,17 @@ var update = async function(newData, eNo){
         });
     return results;
 }
+var fetchAllExhibition = async function(){
+    var result={};
+	
+    await query('SELECT * FROM exhibition ')
+        .then((data) => {
+            result = {code:0, data:data};  
+        }, (error) => {
+            result = {code:-1};
+        });
+		
+    return result;
+}
 //匯出
-module.exports = {add,searchE,fetchOneExhibition,update};
+module.exports = {add,searchE,fetchOneExhibition,update,fetchAllExhibition};

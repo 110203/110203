@@ -34,7 +34,7 @@ router.post('/', upload.single( "eImage"),function(req, res, next){
     console.log(newData)
     update(newData,eNo).then(d => {
         if (d>=0){
-            res.render('index');  //傳至成功頁面
+            res.render('addForm');  //傳至成功頁面
         }else{
             res.render('error');     //導向錯誤頁面
         }  

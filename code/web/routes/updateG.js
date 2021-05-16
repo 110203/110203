@@ -27,12 +27,13 @@ router.post('/', upload.single( "gImage2D"),function(req, res, next){
         gName:req.body.gName, 
         introdution:req.body.introdution,
         gAmount:req.body.gAmount,
+        price:req.body.price,
         gImage2D:req.file.filename,    
     } 
     console.log(newData)
     update(newData,gNo).then(d => {
         if (d>=0){
-            res.render('index');  //傳至成功頁面
+            res.render('addForm');  //傳至成功頁面
         }else{
             res.render('error');     //導向錯誤頁面
         }  
