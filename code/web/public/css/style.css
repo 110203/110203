@@ -1,0 +1,39 @@
+body {
+    font-family: "Karla", sans-serif;
+    background-color: #d0d0ce;
+    min-height: 100vh; 
+}
+
+.center{
+    margin: auto; 
+    width: 70%;
+}
+
+.login-card {
+    border: 0;
+    border-radius: 27.5px;
+    box-shadow: 0 10px 30px 0 rgba(172, 168, 168, 0.43);
+    overflow: hidden; 
+    margin: 3%;
+}
+
+.login-card .card-body {
+    padding: 60px 60px; 
+}
+      
+@media (max-width: 422px) {
+    .login-card .card-body {
+        padding: 35px 24px; 
+    }
+}
+
+.login-card .login-btn {
+    padding: 13px 20px 12px;
+    background-color: #000;
+    border-radius: 4px;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #fff;
+    margin-bottom: 24px; 
+}
