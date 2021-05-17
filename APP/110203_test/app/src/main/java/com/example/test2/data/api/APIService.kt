@@ -1,5 +1,6 @@
 package com.example.test2.data.api
 
+import com.example.test2.data.model.CartAdd
 import com.example.test2.data.model.CartResponse
 import com.example.test2.data.model.ExhibitionResponse
 import com.example.test2.data.model.GoodResponse
@@ -27,5 +28,11 @@ interface APIService {
     fun appAllShoppingcart(
         @Body memNo: RequestBody
     ): Call<CartResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("appAddS")
+    fun appAddS(
+        @Body addSRequest: RequestBody
+    ): Call<CartAdd>
 }
 

@@ -17,3 +17,8 @@ data class CartDetail(
     @field:Json(name = "price") val gPrice: Int,
     @field:Json(name = "gAmount") val gAmount: Int
 )
+
+@JsonClass(generateAdapter = true)
+data class CartAdd(
+    @field:Json(name = "status") val status: String
+)

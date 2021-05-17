@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.test2.MainActivity
 import com.example.test2.R
 import com.example.test2.data.api.RetrofitClient
+import com.example.test2.data.model.CartAdd
 import com.example.test2.data.model.GoodResponse
 import kotlinx.android.synthetic.main.activity_commodity.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -188,6 +189,43 @@ class CommodityListAdapter(val items: ArrayList<MutableMap<String, Any>>) : Recy
                 Log.d("tab","----------------------")
                 Log.d("items", items.toString())
                 Log.d("carttttttt", items[position]["myCartAmount"].toString())
+
+                ////////// POST //////////
+                val jsonObjectMemNo = JSONObject()
+                val jsonObjectGNo = JSONObject()
+                val jsonObjectGAmount = JSONObject()
+                val requestBodyMemNo = jsonObjectMemNo.put("memNo", "a22753516@gmail.com").toString().toRequestBody("application/json".toMediaTypeOrNull())
+                val requestBodyGNo = jsonObjectGNo.put("gNo", items[position]["goodNo"]).toString().toRequestBody("application/json".toMediaTypeOrNull())
+                val requestBodyGAmount = jsonObjectGAmount.put("gAmount", items[position]["myCartAmount"]).toString().toRequestBody("application/json".toMediaTypeOrNull())
+
+                val requestBody = jsonObjectMemNo.put("memNo", "a22753516@gmail.com")
+                        .put("gNo", items[position]["goodNo"])
+                        .put("gAmount", items[position]["myCartAmount"])
+                        .toString().toRequestBody("application/json".toMediaTypeOrNull())
+
+
+                // 利用APIService中的appAllGoods, 將requestBody(eNo) POST 至資料庫, 回傳GoodResponse回來
+                RetrofitClient.instance.appAddS(requestBody)
+                        .enqueue(object: Callback<CartAdd>{
+                            override fun onFailure(call: Call<CartAdd>, t: Throwable) {
+                                t.message?.let { Log.d("ERROR", it) }
+                            }
+
+                            override fun onResponse(
+                                    call: Call<CartAdd>,
+                                    response: Response<CartAdd>
+                            ) {
+
+                                var status = response.body()?.status.toString()
+                                if(status == "success"){
+                                    Log.d("TAGGGGGGG", "success")
+                                }else{
+                                    Log.d("TAGGGGGGG", "error")
+                                }
+                            }
+
+                        })
+                //////////////////////////////
             }else{
                 Log.d("cartttttttERROR", items[position]["myCartAmount"].toString())
             }
