@@ -7,7 +7,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitClient{
     // private  val AUTH = "Basic " + Base64.Encoder()
-    private const val BASE_URL = "http://172.20.10.2/"
+    private const val BASE_URL = "http://140.131.114.155/"
     private val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor())
             .build()

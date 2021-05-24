@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test2.R
@@ -47,6 +46,10 @@ class NotificationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        postMyCart()
+    }
+
+    private fun postMyCart() {
         ////////// POST //////////
         // Create JSON using JSONObject
         val jsonObject = JSONObject()
@@ -60,65 +63,43 @@ class NotificationsFragment : Fragment() {
 
         // 利用APIService中的appAllGoods, 將requestBody(eNo) POST 至資料庫, 回傳GoodResponse回來
         RetrofitClient.instance.appAllShoppingcart(requestBody)
-                .enqueue(object: Callback<CartResponse> {
-                    override fun onFailure(call: Call<CartResponse>, t: Throwable) {
-                        t.message?.let { Log.d("ERROR", it) }
-                    }
+            .enqueue(object: Callback<CartResponse> {
+                override fun onFailure(call: Call<CartResponse>, t: Throwable) {
+                    t.message?.let { Log.d("ERROR", it) }
+                }
 
-                    override fun onResponse(
-                            call: Call<CartResponse>,
-                            response: Response<CartResponse>
-                    ) {
+                override fun onResponse(
+                    call: Call<CartResponse>,
+                    response: Response<CartResponse>
+                ) {
 
-                        var status = response.body()?.status.toString()
-                        val data = ArrayList(response.body()?.data)
-                        if(status == "success"){
-                            // 將data裝進HashMap中
-                            for(i in data?.indices){
-                                var item = mutableMapOf<String, Any>()
-                                item["cartGoodNo"] = data?.get(i).gNo
-                                item["cartGoodName"] = data?.get(i).gName
-                                item["cartGoodPrice"] = data?.get(i).gPrice
-                                item["cartGoodAmount"] = data?.get(i).gAmount
-                                item["cartGoodImg"] = R.drawable.hua_3 // TODO
-                                items.add(item)
-                                Log.d("itemssssss", items.toString())
-                            }
-                            var layoutManager = LinearLayoutManager(mActivity)
-                            layoutManager.orientation = LinearLayoutManager.VERTICAL
-
-                            cartCommodityView.layoutManager = layoutManager
-                            cartCommodityView.adapter = CartListAdapter(items)
-
-                        }else{
-                            textView7.text = "NOT FOUND."
+                    var status = response.body()?.status.toString()
+                    val data = ArrayList(response.body()?.data)
+                    if(status == "success"){
+                        // 將data裝進HashMap中
+                        for(i in data?.indices){
+                            var item = mutableMapOf<String, Any>()
+                            item["cartGoodNo"] = data?.get(i).gNo
+                            item["cartGoodName"] = data?.get(i).gName
+                            item["cartGoodPrice"] = data?.get(i).gPrice
+                            item["cartGoodAmount"] = data?.get(i).gAmount
+                            item["cartGoodImg"] = R.drawable.hua_3 // TODO
+                            items.add(item)
+                            Log.d("itemssssss", items.toString())
                         }
+                        var layoutManager = LinearLayoutManager(mActivity)
+                        layoutManager.orientation = LinearLayoutManager.VERTICAL
+
+                        cartCommodityView.layoutManager = layoutManager
+                        cartCommodityView.adapter = CartListAdapter(items)
+
+                    }else{
+                        textView7.text = "NOT FOUND."
                     }
+                }
 
-                })
+            })
         //////////////////////////////
-
-        /*
-        val res : Resources = resources
-        val commodityNameData = res.getStringArray(R.array.commodity_name)
-        val commodityPriceData = res.getIntArray(R.array.commodity_price)
-        val commodityImgData = res.obtainTypedArray(R.array.commodity_img)
-
-        val items = ArrayList<Map<String, Any>>()
-        for(i in commodityNameData.indices){
-            val item = HashMap<String, Any>()
-            item["goodName"] = commodityNameData[i]
-            item["goodPrice"] = commodityPriceData[i]
-            item["goodImg"] = commodityImgData.getResourceId(i,-1)
-            items.add(item)
-        }
-
-        button3.text = items[0]["goodName"].toString()
-
-         */
-
-
-
     }
 
     class CartListAdapter(val items: ArrayList<MutableMap<String, Any>>) : RecyclerView.Adapter<ViewHolder>() {

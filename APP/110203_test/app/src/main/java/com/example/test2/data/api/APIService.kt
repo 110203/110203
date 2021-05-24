@@ -1,9 +1,6 @@
 package com.example.test2.data.api
 
-import com.example.test2.data.model.CartAdd
-import com.example.test2.data.model.CartResponse
-import com.example.test2.data.model.ExhibitionResponse
-import com.example.test2.data.model.GoodResponse
+import com.example.test2.data.model.*
 import okhttp3.RequestBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -34,5 +31,17 @@ interface APIService {
     fun appAddS(
         @Body addSRequest: RequestBody
     ): Call<CartAdd>
+
+    @Headers("Content-Type: application/json")
+    @POST("appUpdateS")
+    fun appUpdateS(
+        @Body updateSRequest: RequestBody // gAmount, scNo
+    ): Call<CartAmountUpdate>
+
+    @Headers("Content-Type: application/json")
+    @POST("appDeleteS")
+    fun appDeleteS(
+        @Body deleteSRequest: RequestBody // scNo
+    ): Call<CartDelete>
 }
 

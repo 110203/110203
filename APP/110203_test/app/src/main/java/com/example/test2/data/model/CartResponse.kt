@@ -22,3 +22,13 @@ data class CartDetail(
 data class CartAdd(
     @field:Json(name = "status") val status: String
 )
+
+@JsonClass(generateAdapter = true)
+data class CartAmountUpdate(
+    @field:Json(name = "status") val status: String
+)
+
+@JsonClass(generateAdapter = true)
+data class CartDelete(
+    @field:Json(name = "status") val status: String
+)

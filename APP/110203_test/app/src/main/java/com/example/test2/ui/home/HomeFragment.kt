@@ -51,82 +51,62 @@ class HomeFragment : Fragment() {
     }
 
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ////////// POST //////////
+        postExhibition()
 
-        // 利用APIService
-        RetrofitClient.instance.appAllExhibition()
-                .enqueue(object: Callback<ExhibitionResponse>{
-                    override fun onFailure(call: Call<ExhibitionResponse>, t: Throwable) {
-                        t.message?.let { Log.d("ERROR", it) }
-                    }
-
-                    override fun onResponse(
-                            call: Call<ExhibitionResponse>,
-                            response: Response<ExhibitionResponse>
-                    ) {
-                        var status = response.body()?.status.toString()
-                        val data = ArrayList(response.body()?.data)
-
-                        if(status == "success"){
-                            // 將data裝進HashMap中
-                            for(i in data?.indices){
-                                var item = HashMap<String, Any>()
-                                item["exhibitionNo"] = data?.get(i).eNo
-                                item["exhibitionName"] = data?.get(i).eName
-                                item["exhibitionText"] = data?.get(i).eIntrodution
-                                item["exhibitionType"] = data?.get(i).eType
-                                item["exhibitionStartTime"] = data?.get(i).startTime
-                                item["exhibitionEndTime"] = data?.get(i).endTime
-                                item["exhibitionImg"] = R.drawable.hua_3 //TODO
-                                items.add(item)
-                                Log.d("itemssssss", items.toString())
-
-                                var layoutManager = GridLayoutManager(mActivity, 2)
-                                exhibitoinView.layoutManager = layoutManager
-                                exhibitoinView.adapter = ExhibitionListAdapter(items)
-
-                            }
-
-                        }else{
-                            Log.d("ERROR", "NOT FOUND")
-                        }
-
-
-                    }
-
-                })
-        //////////////////////////////
-
-
-
-
-
-
-
-/*
-        val exhibitionNoData = resources.getStringArray(R.array.exhibition_no)
-        val exhibitionNameData = resources.getStringArray(R.array.exhibition_name)
-        val exhibitionTextData = resources.getStringArray(R.array.exhibition_text)
-        val exhibitionImgData = resources.obtainTypedArray(R.array.exhibition_img)
-
-        for(i in exhibitionNameData.indices){
-            val item = HashMap<String, Any>()
-            item["exhibitionNo"] = exhibitionNoData[i]
-            item["exhibitionName"] = exhibitionNameData[i]
-            item["exhibitionText"] = exhibitionTextData[i]
-            item["exhibitionImg"] = exhibitionImgData.getResourceId(i,-1)
-            items.add(item)
-        }
-
- */
         val typeAdapter = mActivity?.let { ArrayAdapter.createFromResource(it, R.array.exhibition_type, android.R.layout.simple_spinner_dropdown_item) }
         spnType.adapter = typeAdapter
 
+    }
+
+    private fun postExhibition() {
+        ////////// POST //////////
+        // 利用APIService
+        RetrofitClient.instance.appAllExhibition()
+            .enqueue(object: Callback<ExhibitionResponse>{
+                override fun onFailure(call: Call<ExhibitionResponse>, t: Throwable) {
+                    t.message?.let { Log.d("ERROR", it) }
+                }
+
+                override fun onResponse(
+                    call: Call<ExhibitionResponse>,
+                    response: Response<ExhibitionResponse>
+                ) {
+                    var status = response.body()?.status.toString()
+                    val data = ArrayList(response.body()?.data)
+
+                    if(status == "success"){
+                        // 將data裝進HashMap中
+                        for(i in data?.indices){
+                            var item = HashMap<String, Any>()
+                            item["exhibitionNo"] = data?.get(i).eNo
+                            item["exhibitionName"] = data?.get(i).eName
+                            item["exhibitionText"] = data?.get(i).eIntrodution
+                            item["exhibitionType"] = data?.get(i).eType
+                            item["exhibitionStartTime"] = data?.get(i).startTime
+                            item["exhibitionEndTime"] = data?.get(i).endTime
+                            item["exhibitionImg"] = R.drawable.hua_3 //TODO
+                            items.add(item)
+                            Log.d("itemssssss", items.toString())
+
+                            var layoutManager = GridLayoutManager(mActivity, 2)
+                            exhibitoinView.layoutManager = layoutManager
+                            exhibitoinView.adapter = ExhibitionListAdapter(items)
+
+                        }
+
+                    }else{
+                        Log.d("ERROR", "NOT FOUND")
+                    }
 
 
+                }
+
+            })
+        //////////////////////////
     }
 
     class ExhibitionListAdapter(val items: ArrayList<Map<String, Any>>) : RecyclerView.Adapter<ViewHolder>() {
