@@ -26,9 +26,6 @@ class Exhibition_2D : AppCompatActivity() {
         val webSettings = webView.settings
         webSettings.javaScriptEnabled = true // 讓網頁js可以使用
 
-
-
-
         btnToBackHome.setOnClickListener {
             finish()
         }

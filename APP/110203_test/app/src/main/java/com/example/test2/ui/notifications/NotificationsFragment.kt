@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.test2.R
 import com.example.test2.data.api.RetrofitClient
 import com.example.test2.data.model.CartResponse
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_commodity.*
 import kotlinx.android.synthetic.main.fragment_notifications.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -27,7 +28,8 @@ class NotificationsFragment : Fragment() {
 
     private lateinit var notificationsViewModel: NotificationsViewModel
     private var mActivity: Activity? = null
-    var items = ArrayList<MutableMap<String, Any>>()
+    var items = ArrayList<MutableMap<String, Any?>>()
+    var totPrice = 0
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -78,20 +80,27 @@ class NotificationsFragment : Fragment() {
                     if(status == "success"){
                         // 將data裝進HashMap中
                         for(i in data?.indices){
-                            var item = mutableMapOf<String, Any>()
+                            var item = mutableMapOf<String, Any?>()
+
                             item["cartGoodNo"] = data?.get(i).gNo
                             item["cartGoodName"] = data?.get(i).gName
                             item["cartGoodPrice"] = data?.get(i).gPrice
                             item["cartGoodAmount"] = data?.get(i).gAmount
-                            item["cartGoodImg"] = R.drawable.hua_3 // TODO
+                            totPrice += data?.get(i).gPrice * data?.get(i).gAmount
+                            if(data?.get(i).gImage == null){
+                                item["cartGoodImg"] = "null.jpg"
+                            }else{
+                                item["cartGoodImg"] = data?.get(i).gImage
+                            }
+
                             items.add(item)
-                            Log.d("itemssssss", items.toString())
                         }
                         var layoutManager = LinearLayoutManager(mActivity)
                         layoutManager.orientation = LinearLayoutManager.VERTICAL
 
                         cartCommodityView.layoutManager = layoutManager
                         cartCommodityView.adapter = CartListAdapter(items)
+                        txtTotPrice.text = totPrice.toString()
 
                     }else{
                         textView7.text = "NOT FOUND."
@@ -102,7 +111,7 @@ class NotificationsFragment : Fragment() {
         //////////////////////////////
     }
 
-    class CartListAdapter(val items: ArrayList<MutableMap<String, Any>>) : RecyclerView.Adapter<ViewHolder>() {
+    class CartListAdapter(val items: ArrayList<MutableMap<String, Any?>>) : RecyclerView.Adapter<ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val v = LayoutInflater.from(parent.context).inflate(R.layout.cart_item, parent, false)
 
@@ -115,12 +124,14 @@ class NotificationsFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int){
+            var photoPath = items[position]["cartGoodImg"].toString()
+
             //holder.cartGoodNo.text = items[position]["cartGoodNo"].toString()
             holder.cartGoodName.text = items[position]["cartGoodName"].toString()
             holder.cartGoodPrice.text = items[position]["cartGoodPrice"].toString()
             holder.cartGoodAmount.text = items[position]["cartGoodAmount"].toString()
-            holder.cartGoodImg.setImageResource(items[position]["cartGoodImg"].toString().toInt())
 
+            Picasso.get().load("http://140.131.114.155/file/$photoPath").into(holder.cartGoodImg)
         }
 
     }

@@ -20,6 +20,7 @@ import com.example.test2.R
 import com.example.test2.data.api.RetrofitClient
 import com.example.test2.data.model.CartAdd
 import com.example.test2.data.model.GoodResponse
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_commodity.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -30,7 +31,7 @@ import retrofit2.Response
 
 
 class Commodity : AppCompatActivity() {
-    var items = ArrayList<MutableMap<String, Any>>()
+    var items = ArrayList<MutableMap<String, Any?>>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,13 +74,19 @@ class Commodity : AppCompatActivity() {
                     if(status == "success"){
                         // 將data裝進HashMap中
                         for(i in data?.indices){
-                            var item = mutableMapOf<String, Any>()
+                            var item = mutableMapOf<String, Any?>()
+
                             item["goodNo"] = data?.get(i).gNo
                             item["goodName"] = data?.get(i).gName
                             item["goodText"] = data?.get(i).gIntrodution
                             item["goodPrice"] = data?.get(i).gPrice
                             item["goodAmount"] = data?.get(i).gAmount
-                            item["goodImg"] = R.drawable.hua_3 //TODO
+                            if(data?.get(i).gImage == null){
+                                item["goodImg"] = "null.jpg"
+                            }else{
+                                item["goodImg"] = data?.get(i).gImage
+                            }
+
                             item["myCartAmount"] = 0
                             items.add(item)
                             Log.d("itemssssss", items.toString())
@@ -95,24 +102,6 @@ class Commodity : AppCompatActivity() {
 
             })
         //////////////////////////////
-
-        /*
-        val commodityNameData = resources.getStringArray(R.array.commodity_name)
-        val commodityTextData = resources.getStringArray(R.array.commodity_text)
-        val commodityPriceData = resources.getIntArray(R.array.commodity_price)
-        val commodityImgData = resources.obtainTypedArray(R.array.commodity_img)
-
-        val items = ArrayList<Map<String, Any>>()
-        for(i in commodityNameData.indices){
-            val item = HashMap<String, Any>()
-            item["goodName"] = commodityNameData[i]
-            item["goodText"] = commodityTextData[i]
-            item["goodPrice"] = commodityPriceData[i]
-            item["goodImg"] = commodityImgData.getResourceId(i,-1)
-            items.add(item)
-        }
-        */
-
         // 返回展覽
         btnToBack2D.setOnClickListener {
             finish()
@@ -130,7 +119,7 @@ class Commodity : AppCompatActivity() {
 }
 
 
-class CommodityListAdapter(val items: ArrayList<MutableMap<String, Any>>) : RecyclerView.Adapter<ViewHolder>() {
+class CommodityListAdapter(val items: ArrayList<MutableMap<String, Any?>>) : RecyclerView.Adapter<ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // recyclerView
         val v = LayoutInflater.from(parent.context).inflate(R.layout.exhibition_home, parent, false)
@@ -151,16 +140,18 @@ class CommodityListAdapter(val items: ArrayList<MutableMap<String, Any>>) : Recy
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int){
+        var photoPath = items[position]["goodImg"].toString()
+
         // recyclerView
         holder.goodName.text = items[position]["goodName"].toString()
         holder.goodPrice.text = "$" + items[position]["goodPrice"].toString()
-        holder.goodImg.setImageResource(items[position]["goodImg"].toString().toInt())
+        Picasso.get().load("http://140.131.114.155/file/$photoPath").into(holder.goodImg)
 
         // dialog
         holder.goodDetailName.text = items[position]["goodName"].toString()
         holder.goodDetailText.text = items[position]["goodText"].toString()
         holder.goodDetailPrice.text = items[position]["goodPrice"].toString()
-        holder.goodDetailImg.setImageResource(items[position]["goodImg"].toString().toInt())
+        Picasso.get().load("http://140.131.114.155/file/$photoPath").into(holder.goodDetailImg)
 
         var amount = 0
         var goodAmount = items[position]["goodAmount"] as Int
@@ -177,18 +168,6 @@ class CommodityListAdapter(val items: ArrayList<MutableMap<String, Any>>) : Recy
             if(goodAmount >= (amount + items[position]["myCartAmount"] as Int)){ // 目前要新增的數量+已加入購物車數量
 
                 items[position].put("myCartAmount", amount + items[position]["myCartAmount"] as Int)
-
-                Log.d("djfsifjdosfds", items[position]["myCartAmount"].toString())
-
-                Log.d("disjdioasjdvalue", items[position].values.toString())
-                Log.d("disjdioasjd", items::class.simpleName.toString())
-                Log.d("disjdioasjd", items[position]::class.simpleName.toString())
-                Log.d("goodAmount", goodAmount.toString())
-                Log.d("amount", amount.toString())
-                Log.d("myCartAmount", items[position]["myCartAmount"].toString())
-                Log.d("tab","----------------------")
-                Log.d("items", items.toString())
-                Log.d("carttttttt", items[position]["myCartAmount"].toString())
 
                 ////////// POST //////////
                 val jsonObjectMemNo = JSONObject()

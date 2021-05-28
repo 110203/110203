@@ -14,6 +14,7 @@ data class CartResponse(
 data class CartDetail(
     @field:Json(name = "gNo") val gNo: String,
     @field:Json(name = "gName") val gName: String,
+    @field:Json(name = "gImage2D") val gImage: String,
     @field:Json(name = "price") val gPrice: Int,
     @field:Json(name = "gAmount") val gAmount: Int
 )

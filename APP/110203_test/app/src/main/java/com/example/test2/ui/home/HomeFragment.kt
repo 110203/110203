@@ -18,11 +18,9 @@ import com.example.test2.Exhibition_2D
 import com.example.test2.R
 import com.example.test2.data.api.RetrofitClient
 import com.example.test2.data.model.ExhibitionResponse
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_commodity.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,7 +30,7 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     private val mContext: Context? = null
     private var mActivity: Activity? = null
-    var items = ArrayList<Map<String, Any>>()
+    var items = ArrayList<Map<String, Any?>>()
 
 
     override fun onCreateView(
@@ -57,8 +55,7 @@ class HomeFragment : Fragment() {
 
         postExhibition()
 
-        val typeAdapter = mActivity?.let { ArrayAdapter.createFromResource(it, R.array.exhibition_type, android.R.layout.simple_spinner_dropdown_item) }
-        spnType.adapter = typeAdapter
+
 
     }
 
@@ -79,24 +76,37 @@ class HomeFragment : Fragment() {
                     val data = ArrayList(response.body()?.data)
 
                     if(status == "success"){
+                        var exhibitionType = arrayListOf<String>()
+
                         // 將data裝進HashMap中
-                        for(i in data?.indices){
-                            var item = HashMap<String, Any>()
+                        for(i in data?.indices) {
+                            var item = HashMap<String, Any?>()
+
                             item["exhibitionNo"] = data?.get(i).eNo
                             item["exhibitionName"] = data?.get(i).eName
                             item["exhibitionText"] = data?.get(i).eIntrodution
                             item["exhibitionType"] = data?.get(i).eType
+                            exhibitionType.add(data?.get(i).eType)
+                            if (data?.get(i).eImage == null) {
+                                item["exhibitionImg"] = "null.jpg"
+                            } else {
+                                item["exhibitionImg"] = data?.get(i).eImage
+                            }
                             item["exhibitionStartTime"] = data?.get(i).startTime
                             item["exhibitionEndTime"] = data?.get(i).endTime
-                            item["exhibitionImg"] = R.drawable.hua_3 //TODO
+
                             items.add(item)
-                            Log.d("itemssssss", items.toString())
-
-                            var layoutManager = GridLayoutManager(mActivity, 2)
-                            exhibitoinView.layoutManager = layoutManager
-                            exhibitoinView.adapter = ExhibitionListAdapter(items)
-
                         }
+
+                        var layoutManager = GridLayoutManager(mActivity, 2)
+                        exhibitoinView.layoutManager = layoutManager
+                        exhibitoinView.adapter = ExhibitionListAdapter(items)
+
+                        // 移除exhibitionType的重複值
+                        exhibitionType = ArrayList(HashSet(exhibitionType))
+
+                        val typeAdapter = mActivity?.let { ArrayAdapter<String>(it, android.R.layout.simple_spinner_dropdown_item, exhibitionType) }
+                        spnType.adapter = typeAdapter
 
                     }else{
                         Log.d("ERROR", "NOT FOUND")
@@ -109,7 +119,7 @@ class HomeFragment : Fragment() {
         //////////////////////////
     }
 
-    class ExhibitionListAdapter(val items: ArrayList<Map<String, Any>>) : RecyclerView.Adapter<ViewHolder>() {
+    class ExhibitionListAdapter(val items: ArrayList<Map<String, Any?>>) : RecyclerView.Adapter<ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val v = LayoutInflater.from(parent.context).inflate(R.layout.exhibition_home, parent, false)
 
@@ -128,13 +138,15 @@ class HomeFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int){
+            var photoPath = items[position]["exhibitionImg"].toString()
+
             holder.exhibitionName.text = items[position]["exhibitionName"].toString()
             holder.exhibitionText.text = items[position]["exhibitionText"].toString()
-            holder.exhibitionImg.setImageResource(items[position]["exhibitionImg"].toString().toInt())
+            Picasso.get().load("http://140.131.114.155/file/$photoPath").into(holder.exhibitionImg)
 
             holder.exhibitionDetailName.text = items[position]["exhibitionName"].toString()
             holder.exhibitionDetailText.text = items[position]["exhibitionText"].toString()
-            holder.exhibitionDetailImg.setImageResource(items[position]["exhibitionImg"].toString().toInt())
+            Picasso.get().load("http://140.131.114.155/file/$photoPath").into(holder.exhibitionDetailImg)
             holder.goTo2D.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString("showNo", items[position]["exhibitionNo"].toString())
