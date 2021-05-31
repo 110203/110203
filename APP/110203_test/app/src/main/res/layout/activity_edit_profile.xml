@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditProfile">
+    tools:context=".activity.profile.EditProfile">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:layout_marginTop="32dp"
             android:gravity="center"
             android:text="編輯個人資料"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center|left"
                     android:text="會員姓名"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/txtUserName"
@@ -75,7 +75,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center|left"
                     android:text="會員帳號"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/txtUserId"
@@ -97,7 +97,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center|left"
                     android:text="電話"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/txtTel"
@@ -120,7 +120,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center|left"
                     android:text="地址"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/txtAddress"

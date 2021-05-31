@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.home.Exhibition_2D">
+    tools:context=".activity.home.Exhibition_3D">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/showNavbarControl"
@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
+            android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
@@ -36,7 +36,7 @@
             app:layout_constraintTop_toTopOf="@+id/toolbar2">
 
             <ImageButton
-                android:id="@+id/btnToBackHome"
+                android:id="@+id/btnToBackHome_3D"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="#00000000"
@@ -50,7 +50,7 @@
                 android:layout_weight="1" />
 
             <ImageButton
-                android:id="@+id/btnToCommdityList"
+                android:id="@+id/btnToCommdityList_3D"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="#00000000"
@@ -63,15 +63,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <WebView
-        android:id="@+id/webview"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showNavbarControl">
+        app:layout_constraintTop_toBottomOf="@+id/showNavbarControl" />
 
-    </WebView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

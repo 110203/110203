@@ -43,5 +43,17 @@ interface APIService {
     fun appDeleteS(
         @Body deleteSRequest: RequestBody // scNo
     ): Call<CartDelete>
+
+    @Headers("Content-Type: application/json")
+    @POST("appMemExhibition")
+    fun appMemExhibition(
+        @Body memNo: RequestBody // scNo
+    ): Call<ExhibitionResponse_memNo>
+
+    @Headers("Content-Type: application/json")
+    @POST("appLoginExhibition")
+    fun appLoginExhibition(
+        @Body pinRequest: RequestBody // memNo, pin
+    ): Call<ExhibitionResponse_pin>
 }
 
