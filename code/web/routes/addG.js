@@ -16,7 +16,7 @@ var storage = multer.diskStorage({
     }    
 })
 // 產生multer的上傳物件
-var maxSize=10000*10000;  //設定最大可接受圖片大小
+var maxSize=2000*2000;  //設定最大可接受圖片大小
 
 var upload = multer({storage:storage})
 //---------------------------
@@ -26,7 +26,7 @@ router.post('/', upload.single('gImage2d'),function(req, res, next) {
     if (typeof req.file != 'undefined'){
         // 傳入檔案不可超過maxSize
         if(req.file.size > maxSize){
-            res.render('imageerror');  //圖片過大
+            res.render('error');  //圖片過大
             return;
         }                      
     }
@@ -37,6 +37,7 @@ router.post('/', upload.single('gImage2d'),function(req, res, next) {
     var gImage3d; 
     var voice; 
     var gAmount=req.body.gAmount;
+    var price=req.body.price;
      // 如果有選擇圖片
     /*if (typeof req.file != 'undefined'){
         eImage=req.file.filename;   //取得上傳照片名稱
@@ -47,6 +48,7 @@ router.post('/', upload.single('gImage2d'),function(req, res, next) {
         gName:gName,
         introdution:introdution,
         gAmount:gAmount,
+        price:price,
         voice:voice,
         gImage2d:gImage2d,
         gImage3d:gImage3d
@@ -54,7 +56,7 @@ router.post('/', upload.single('gImage2d'),function(req, res, next) {
     console.log(newData)
     add(newData).then(d => {
         if (d==0){
-            res.render('index');  //傳至成功頁面
+            res.render('addForm');  //傳至成功頁面
         }else{
             res.render('error');     //導向錯誤頁面
         }  

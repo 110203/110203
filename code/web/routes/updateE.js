@@ -29,12 +29,13 @@ router.post('/', upload.single( "eImage"),function(req, res, next){
         startTime:req.body.startTime,
         endTime:req.body.endTime,
         eImage:req.file.filename,
-        eType:req.body.eType    
+        eType:req.body.eType,
+        eDelete:req.body.eDelete  
     } 
     console.log(newData)
     update(newData,eNo).then(d => {
         if (d>=0){
-            res.render('index');  //傳至成功頁面
+            res.render('addForm');  //傳至成功頁面
         }else{
             res.render('error');     //導向錯誤頁面
         }  
