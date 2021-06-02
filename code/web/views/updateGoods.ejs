@@ -79,13 +79,22 @@
                           商品數量
                         </label>
                         <input type="text" class="form-control" id="exampleInputPassword1"  name='gAmount'value="<%= items.gAmount %>"require>
-					            </div>					  
+					            </div>
+
                       <div class="form-group">					 
                           <label for="exampleInputPassword1">
                             商品價錢
                           </label>
                           <input type="text" class="form-control" id="exampleInputPassword1"   name='price'value="<%= items.price %>"require>
                       </div>
+
+                      <div class="form-group">					 
+                        <label for="exampleInputPassword1">
+                          商品狀態
+                        </label>
+                        <input type="text" class="form-control" id="exampleInputPassword1"   name='gDelete'value="<%= items.gDelete %>"require>
+                      </div>
+
                       <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="submit">
                     </form>
                   </div>

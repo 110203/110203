@@ -22,7 +22,11 @@ var searchGoods = require('./routes/searchGoods');
 //app api
 var appAllGoods = require('./routes/appAllGoods');
 var appAllExhibition = require('./routes/appAllExhibition');
+var appMemExhibition = require('./routes/appMemExhibition');
+var appLoginExhibition = require('./routes/appLoginExhibition');
 var appAddS = require('./routes/appAddS');
+var appDeleteS = require('./routes/appDeleteS');
+var appUpdateS = require('./routes/appUpdateS');
 var appAllShoppingcart = require('./routes/appAllShoppingcart');
 
 var app = express();
@@ -61,7 +65,11 @@ app.use('/searchGoods', searchGoods);
 //app api
 app.use('/appAllGoods', appAllGoods);
 app.use('/appAllExhibition', appAllExhibition);
+app.use('/appMemExhibition', appMemExhibition);
+app.use('/appLoginExhibition', appLoginExhibition);
 app.use('/appAddS', appAddS);
+app.use('/appDeleteS', appDeleteS);
+app.use('/appUpdateS', appUpdateS);
 app.use('/appAllShoppingcart', appAllShoppingcart);
 
 app.use(express.static('public/file'));

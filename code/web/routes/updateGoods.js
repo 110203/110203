@@ -20,7 +20,8 @@ router.get('/:gNo', function(req, res, next) {
                 price:d.data[0].price,
                 voice:d.data[0].voice,
                 gImage2D:d.data[0].gImage2D,
-                gImage3D:d.data[0].gImage3D
+                gImage3D:d.data[0].gImage3D,
+                gDelete:d.data[0].gDelete
             }
             res.render('updateGoods', {items:data});  //將資料傳給更新頁面
         }else{

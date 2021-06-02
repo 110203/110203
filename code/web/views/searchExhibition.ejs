@@ -28,6 +28,9 @@
 							<thead>
 								<tr>
 									<th>
+										展覽編號
+									</th>
+									<th>
 										展覽名稱
 									</th>
 									<th>
@@ -40,6 +43,9 @@
 							</thead>
 							<tbody>
 								<% for(var i=0; i<items.length; i++) {%>
+									<td>
+										<%= items[i].eNo %>
+									</td>
 									<td>
 										<%= items[i].eName %>
 									</td>

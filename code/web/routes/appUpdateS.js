@@ -2,25 +2,19 @@ var express = require('express');
 var router = express.Router();
 
 //增加引用函式
-const {add} = require('./utility/shopping_cart');
+const {update} = require('./utility/shopping_cart');
 
 
 //---------------------------
 //接收POST請求
 router.post('/', function(req, res, next) {
-    var memNo = req.body.memNo;          
-    var gNo = req.body.gNo;             
-    var gAmount=req.body.gAmount;
-    
+    var scNo = req.body.memNo;
     var newData={
-        memNo:memNo,
-        gNo:gNo,
-        gAmount:gAmount
-    } 
-    
-    add(newData).then(d => {
+        gAmount:req.body.gAmount,   
+    }           
+    update(newData,scNo).then(d => {
         console.log(newData)
-            if (d.cade==0){
+            if (d.code==0){
                 console.log('d!=null')
                 res.status(201).json({
                     status:'success'

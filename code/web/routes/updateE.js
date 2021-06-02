@@ -29,7 +29,8 @@ router.post('/', upload.single( "eImage"),function(req, res, next){
         startTime:req.body.startTime,
         endTime:req.body.endTime,
         eImage:req.file.filename,
-        eType:req.body.eType    
+        eType:req.body.eType,
+        eDelete:req.body.eDelete  
     } 
     console.log(newData)
     update(newData,eNo).then(d => {

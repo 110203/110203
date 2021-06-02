@@ -9,7 +9,7 @@ router.post('/', function(req, res, next) {
   fetchAllGoods(eNo).then(d => {
     console.log(eNo)
     console.log(d.data)
-      if (d==0){
+      if (d.code==0){
         console.log('d!=null')
         res.status(201).json({
           status:'success',

@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const {fetchAllExhibition} = require('./utility/exhibition');
+const {memExhibition} = require('./utility/exhibition');
 /* GET home page. */
 router.post('/', function(req, res, next) {
-
-  fetchAllExhibition().then(d => {
+  var memNo=req.body.memNo;
+  memExhibition(memNo).then(d => {
       if (d.code==0){
         console.log('d!=null')
         res.status(201).json({

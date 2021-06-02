@@ -19,7 +19,8 @@ router.get('/:eNo', function(req, res, next) {
                 startTime: moment(d.data[0].startTime).format("YYYY-MM-DD"),
                 endTime: moment(d.data[0].endTime).format("YYYY-MM-DD"),
                 eImage:d.data[0].eImage,
-                eType:d.data[0].eType
+                eType:d.data[0].eType,
+                eDelete:d.data[0].eDelete
             }
             res.render('updateExhibition', {items:data});  //將資料傳給更新頁面
         }else{

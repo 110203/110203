@@ -28,7 +28,8 @@ router.post('/', upload.single( "gImage2D"),function(req, res, next){
         introdution:req.body.introdution,
         gAmount:req.body.gAmount,
         price:req.body.price,
-        gImage2D:req.file.filename,    
+        gImage2D:req.file.filename,
+        gDelete:req.body.gDelete    
     } 
     console.log(newData)
     update(newData,gNo).then(d => {

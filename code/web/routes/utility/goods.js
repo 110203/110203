@@ -21,7 +21,7 @@ var add = async function(newData){
 var searchG = async function(keyword){
     var result={};
 	
-    await query('SELECT * FROM goods where gName like ?','%'+keyword+'%')
+    await query('SELECT * FROM goods where gName like ? and gDelete=0','%'+keyword+'%')
         .then((data) => {
             result = {code:0, data:data};  
         }, (error) => {
@@ -45,7 +45,7 @@ var fetchOneGoods = async function(gNo){
 var update = async function(newData, gNo){
     var results={};
 
-    await query('UPDATE goods SET gName=?, introdution=?, gAmount=?,price=?,voice=?,gImage2D=?,gImage3D=? WHERE gNo = ?', [newData.gName, newData.introdution,newData.gAmount,newData.price,newData.voice, newData.gImage2D, newData.gImage3D, gNo])
+    await query('UPDATE goods SET gName=?, introdution=?, gAmount=?,price=?,voice=?,gImage2D=?,gImage3D=?,gDelete=? WHERE gNo = ?', [newData.gName, newData.introdution,newData.gAmount,newData.price,newData.voice, newData.gImage2D, newData.gImage3D,newData.gDelete, gNo])
         .then((data) => {
             results = data.affectedRows;  
         }, (error) => {
@@ -56,7 +56,7 @@ var update = async function(newData, gNo){
 var fetchAllGoods = async function(eNo){
     var result={};
 	
-    await query('SELECT * FROM goods where eNo =  ?',eNo)
+    await query('SELECT * FROM goods where eNo = ? and gDelete=0',eNo)
         .then((data) => {
             result = {code:0, data:data};  
         }, (error) => {

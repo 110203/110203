@@ -9,7 +9,7 @@ router.post('/', function(req, res, next) {
   fetchAllShoppingcart(memNo).then(d => {
     console.log(memNo)
     console.log(d.data)
-      if (d==0){
+      if (d.code==0){
         console.log('d!=null')
         res.status(201).json({
           status:'success',
