@@ -12,59 +12,29 @@
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">	
-    <link href="/css/login.css" rel="stylesheet">
   </head>
 
   <body>
-    <div class="container-fluid">
-		<div class="row center">
-			<div class="col-md-12 d-flex align-items-center min-vh-100 py-3 py-md-0">
-				<div class="container card">
-					<div class="col-md-12">
-						<h3>
-							展覽搜尋結果
-						</h3>
-						<table class="table">
-							<thead>
-								<tr>
-									<th>
-										展覽編號
-									</th>
-									<th>
-										展覽名稱
-									</th>
-									<th>
-										開始時間
-									</th>
-									<th>
-										結束時間
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<% for(var i=0; i<items.length; i++) {%>
-									<td>
-										<%= items[i].eNo %>
-									</td>
-									<td>
-										<%= items[i].eName %>
-									</td>
-									<td>
-										<%= items[i].startTime %>
-									</td>
-									<td>
-										<%= items[i].endTime %>
-									</td>
-									<td>
-										<a href="/updateExhibition/<%= items[i].eNo %>" class="aa-top-slider-btn">修改</a>
-									</td>
-								</tr>
-								<% } %> 
-							</tbody>
-						</table>
+    <div class="container-fluid center">
+		<div class="row search-card">
+			<div class="col-md-12">
+				<h2 style="margin-top: 2%; margin-bottom: 2%; font-weight: 600;">搜尋結果</h2>
+			</div>
+			<% for(var i=0; i<items.length; i++) {%>
+			<div class="col-md-4 result">
+				<div class="image-text-overlay">
+					<img src="<%= items[i].eImage %>">
+					
+					<div class="text-block">
+						<h4><%= items[i].eName %></h4>
+						<p>展覽編號 <%= items[i].eNo %></p>
+						<p>開始時間 <%= items[i].startTime %></p>
+						<p>結束時間 <%= items[i].endTime %></p>
+						<a class="btn" href="/updateExhibition/<%= items[i].eNo %>">修改 »</a>
 					</div>
 				</div>
 			</div>
+			<% } %> 
 		</div>
 	</div>
 

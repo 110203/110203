@@ -10,60 +10,35 @@
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-	<link href="css/login.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
   </head>
   <body>
-	<div class="container-fluid">
-		<div class="row center">
-			<div class="col-md-12 d-flex align-items-center min-vh-100 py-3 py-md-0">
-				<div class="container card">
-					<div class="col-md-12">
-						<h3>
-							搜尋結果
-						</h3>
-						<table class="table">
-							<thead>
-								<tr>
-									<th>
-										展覽編號
-									</th>
-									<th>
-										商品名稱
-									</th>
-									<th>
-										商品數量
-									</th>
-								</tr>
-							</thead>
-							<% for(var i=0; i<items.length; i++) {%>
-							<tbody>
-								<td>
-									<%= items[i].eNo %>
-								</td>
-								<td>
-									<%= items[i].gName %>
-								</td>
-								<td>
-									<%= items[i].gAmount %>
-								</td>
-								<td>
-									<a href="/updateGoods/<%= items[i].gNo %>" class="aa-top-slider-btn">修改</a>
-								</td>
-								</tr>
-							</tbody>
-							<% } %> 
-						</table>
+	<div class="container-fluid center">
+		<div class="row search-card">
+			<div class="col-md-12">
+				<h2 style="margin-top: 2%; margin-bottom: 2%; font-weight: 600;">搜尋結果</h2>
+			</div>
+			<% for(var i=0; i<items.length; i++) {%>
+			<div class="col-md-4 result">
+				<div class="image-text-overlay">
+					<img src="<%= items[i].gImage2D %>">
+					
+					<div class="text-block">
+						<h4><%= items[i].gName %></h4>
+						<p>展覽編號 <%= items[i].eNo %></p>
+						<p>數量 <%= items[i].gAmount %></p>
+						<a class="btn" href="/updateGoods/<%= items[i].gNo %>">修改 »</a>
 					</div>
 				</div>
 			</div>
+			<% } %> 
 		</div>
 	</div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/scripts.js"></script>
   </body>
 </html>
