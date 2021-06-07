@@ -11,11 +11,11 @@
     <meta name="author" content="LayoutIt!">
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">	
-  </head>
+    <link href="/css/style.css" rel="stylesheet">
 
+  </head>
   <body>
-    <div class="container-fluid center">
+	<div class="container-fluid center">
 		<div class="row search-card">
 			<div class="col-md-12">
 				<h2 style="margin-top: 2%; margin-bottom: 2%; font-weight: 600;">搜尋結果</h2>
@@ -23,14 +23,13 @@
 			<% for(var i=0; i<items.length; i++) {%>
 			<div class="col-md-4 result">
 				<div class="image-text-overlay">
-					<img src="<%= items[i].eImage %>">
+					<img src="<%= items[i].gImage2D %>">
 					
 					<div class="text-block">
-						<h4><%= items[i].eName %></h4>
+						<h4><%= items[i].gName %></h4>
 						<p>展覽編號 <%= items[i].eNo %></p>
-						<p>開始時間 <%= items[i].startTime %></p>
-						<p>結束時間 <%= items[i].endTime %></p>
-						<a class="btn" href="/updateExhibition/<%= items[i].eNo %>">修改 »</a>
+						<p>數量 <%= items[i].gAmount %></p>
+						<a class="btn" href="/updateGoods/<%= items[i].gNo %>">修改 »</a>
 					</div>
 				</div>
 			</div>
